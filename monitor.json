@@ -1,0 +1,18 @@
+{
+  "appName": "app",
+  "output": "",
+  "exts": [
+    ".js"
+  ],
+  "buildTags": "",
+  "cmdArgs": [],
+  "envs": [],
+  "lang": "js",
+  "script": "node test.js",
+  "ignores": [
+    ""
+  ],
+  "ignoreRegs": [
+    ""
+  ]
+}
