@@ -40,7 +40,11 @@ monitor -lang=xx -o=xx -f=xx -args=xxx -s=xxx
   // 语言,默认go（go||js||ts）
   "lang": "go",
   // 只有node需要。每次文件改变执行的脚本（ts: ts-node test.ts）
-  "script": "node test.js"
+  "script": "node test.js",
+  // 忽略的文件名
+  "ignores": [""],
+  // 忽略文件名正则表达式
+  "ignoreRegs": [""]
 }
 
 ```
