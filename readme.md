@@ -1,5 +1,5 @@
 # monitor
-> golang 监听热编译，用于golang或nodejs
+> 监听热编译，用于golang或nodejs
 
 ### 安装 
 ```
