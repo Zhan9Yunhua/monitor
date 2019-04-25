@@ -12,7 +12,7 @@ monitor -lang=xx -o=xx -f=xx -args=xxx -s=xxx
 ```
 
 - -lang =
-语言,默认go（go||js||ts）
+语言,默认go（go || js）
 - -o =
 打包路径（默认当前路径，node不需要）
 - -f =
@@ -37,7 +37,7 @@ monitor -lang=xx -o=xx -f=xx -args=xxx -s=xxx
   "cmdArgs": ["a=b"],
   // 环境变量（键值对）
   "envs": ["a=b"],
-  // 语言,默认go（go||js||ts）
+  // 语言,默认go（可选：go || js）
   "lang": "go",
   // 只有node需要。每次文件改变执行的脚本（ts: ts-node test.ts）
   "script": "node test.js",
