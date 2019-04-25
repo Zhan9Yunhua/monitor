@@ -31,7 +31,7 @@ func main() {
 	flag.Parse()
 
 	curPath, _ = os.Getwd()
-	curPath += "/test"
+	//curPath += "/test"
 
 	cfgHandler()
 
