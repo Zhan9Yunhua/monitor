@@ -41,6 +41,7 @@ func cfgHandler() {
 		cfgFile = defCfgFile
 	}
 	fpath, _ := filepath.Abs(cfgFile)
+	println(fpath)
 	if fileExist(fpath) {
 		if fby, err := ioutil.ReadFile(fpath); err == nil {
 			if json.Unmarshal(fby, c) != nil {
