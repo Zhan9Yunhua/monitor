@@ -1,2 +1,8 @@
+github.com/Zhan9Yunhua/logger v0.0.0-20190428154223-8f7b0db894b7 h1:3OBnTBn8Dws6Qckv+W5GUL0NwwWkqJNQP+ZT8LoOd94=
+github.com/Zhan9Yunhua/logger v0.0.0-20190428154223-8f7b0db894b7/go.mod h1:3JS3plpxxjCGtpEEP5rWNBLsQu7wwBXurMSZwW4z7t8=
+github.com/Zhan9Yunhua/logger v0.0.0-20190429034825-2625562eaf61 h1:uRS/Llr3ZKm38p9ErTK2Czpk7S3dozfeUU35vtLxbbk=
+github.com/Zhan9Yunhua/logger v0.0.0-20190429034825-2625562eaf61/go.mod h1:3JS3plpxxjCGtpEEP5rWNBLsQu7wwBXurMSZwW4z7t8=
+github.com/Zhan9Yunhua/logger v0.0.0-20190429041551-fbc2f63be669 h1:1nZQQVaI6kZgn/Ih6Eac0v9VEkx1BDemfC4Iav1gsGI=
+github.com/Zhan9Yunhua/logger v0.0.0-20190429041551-fbc2f63be669/go.mod h1:3JS3plpxxjCGtpEEP5rWNBLsQu7wwBXurMSZwW4z7t8=
 github.com/howeyc/fsnotify v0.9.0 h1:0gtV5JmOKH4A8SsFxG2BczSeXWWPvcMT0euZt5gDAxY=
 github.com/howeyc/fsnotify v0.9.0/go.mod h1:41HzSPxBGeFRQKEEwgh49TRw/nKBsYZ2cF1OzPjSJsA=

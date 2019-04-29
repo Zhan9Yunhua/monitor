@@ -1,8 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"github.com/Zhan9Yunhua/logger"
 	"os"
 	"os/exec"
 	"strings"
@@ -22,17 +21,16 @@ var (
 func mon(paths []string) {
 	watcher, err := fsn.NewWatcher()
 	if err != nil {
-		log.Fatalln("Fail to new watcher")
+		logger.Fatalln("Fail to new watcher")
 	}
-	log.Println("Initializing monitor ...")
+	logger.Infoln("Initializing ...")
 
 	go monHandler(watcher)
 
 	for _, path := range paths {
 		err = watcher.Watch(path)
 		if err != nil {
-			log.Fatalln("Fail to watch directory: " + err.Error())
-
+			logger.Fatalln("Fail to watch directory: " + err.Error())
 		}
 	}
 }
@@ -71,7 +69,7 @@ func monHandler(w *fsn.Watcher) {
 				}()
 			}
 		case err := <-w.Error:
-			log.Fatalln(err)
+			logger.Fatalln(err)
 		}
 	}
 }
@@ -92,18 +90,18 @@ func build() {
 	mutex.Lock()
 	defer mutex.Unlock()
 
-	log.Println("Start building...")
+	logger.Infoln("Start building...")
 
 	bcmd := exec.Command("go", argsHandler()...)
 	bcmd.Env = append(os.Environ(), "GOGC=off")
 	bcmd.Stdout = os.Stdout
 	bcmd.Stderr = os.Stderr
 	if err := bcmd.Run(); err != nil {
-		log.Fatalln("!! Build failed !!")
+		logger.Fatalln("!! Build failed !!")
 		return
 	}
 
-	log.Println("Build was successful")
+	logger.Successln("Build was successful")
 	restart()
 }
 
@@ -115,19 +113,19 @@ func restart() {
 func kill() {
 	defer func() {
 		if e := recover(); e != nil {
-			fmt.Println("Kill recover -> ", e)
+			logger.Infoln("Kill recover -> ", e)
 		}
 	}()
 
 	if cmd != nil && cmd.Process != nil {
 		if err := cmd.Process.Kill(); err != nil {
-			log.Printf("** Kill -> Pid: %d. %s\n", cmd.Process.Pid, err)
+			logger.Infof("** Kill -> Pid: %d. %s\n", cmd.Process.Pid, err)
 		}
 	}
 }
 
 func start() {
-	log.Printf("Restarting %s ...\n", cfg.AppName)
+	logger.Infof("Restarting %s ...\n", cfg.AppName)
 
 	if cfg.Lang == "go" {
 		cmd = exec.Command(cfg.Output)
@@ -142,7 +140,7 @@ func start() {
 	cmd.Env = append(os.Environ(), cfg.Envs...)
 
 	go cmd.Run()
-	log.Printf("%s is running...\n", cfg.AppName)
+	logger.Infof("%s is running...\n", cfg.AppName)
 }
 
 // 处理args

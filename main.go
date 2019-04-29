@@ -2,10 +2,11 @@ package main
 
 import (
 	"flag"
-	"log"
 	"os"
 	"runtime"
 	"strings"
+
+	"github.com/Zhan9Yunhua/logger"
 )
 
 var (
@@ -28,10 +29,11 @@ func init() {
 }
 
 func main() {
+	logger.Infoln("monitor starting...")
 	flag.Parse()
 
 	curPath, _ = os.Getwd()
-	//curPath += "/test"
+	curPath += "/test"
 
 	cfgHandler()
 
@@ -57,7 +59,7 @@ func flagHandler() {
 	}
 
 	if cfg.Lang != "go" && cfg.Script == "" {
-		log.Fatalln("Script can not empty !")
+		logger.Fatalln("Script can not empty !")
 	}
 }
 

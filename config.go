@@ -8,7 +8,7 @@ import (
 	"runtime"
 )
 
-const defCfgFile = "./monito.json"
+const defCfgFile = "./monitor.json"
 
 type Config struct {
 	// app name

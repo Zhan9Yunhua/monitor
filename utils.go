@@ -46,19 +46,23 @@ func getFileModTime(path string) int64 {
 }
 
 func checkIsIgnore(filename string) bool {
-	for _, v := range cfg.Ignores {
-		if v == filename {
-			return true
-		} else {
-			continue
+	if len(cfg.Ignores) > 0 {
+		for _, v := range cfg.Ignores {
+			if v == filename {
+				return true
+			} else {
+				continue
+			}
 		}
 	}
 
-	for _, r := range cfg.IgnoreRegexp {
-		if r.MatchString(filename) {
-			return true
-		} else {
-			continue
+	if len(cfg.IgnoreRegexp) > 0 {
+		for _, r := range cfg.IgnoreRegexp {
+			if r.MatchString(filename) {
+				return true
+			} else {
+				continue
+			}
 		}
 	}
 
