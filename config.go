@@ -54,6 +54,10 @@ func cfgHandler() {
 		}
 	}
 
+	if c.AppName == "" {
+		c.AppName = filepath.Base(curPath)
+	}
+
 	if c.Output == "" {
 		outputExt := ""
 		if runtime.GOOS == "windows" {
@@ -63,9 +67,6 @@ func cfgHandler() {
 	}
 	if c.Lang == "" {
 		c.Lang = "go"
-	}
-	if c.AppName == "" {
-		c.AppName = filepath.Base(curPath)
 	}
 
 	if len(c.IgnoreRegs) > 0 {

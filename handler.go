@@ -22,13 +22,14 @@ func mon(paths []string) {
 	watcher, err := fsn.NewWatcher()
 	if err != nil {
 		logger.Fatalln("Fail to new watcher")
+		return
 	}
 	logger.Successln("Initializing ...")
 
 	go monHandler(watcher)
 
 	for _, path := range paths {
-		err = watcher.Watch(path)
+		err := watcher.Watch(path)
 		if err != nil {
 			logger.Fatalln("Fail to watch directory: " + err.Error())
 		}
@@ -147,10 +148,9 @@ func start() {
 func argsHandler() []string {
 	args := []string{"build"}
 	args = append(args, "-o", cfg.Output)
-	args = append(args, cfg.Files...)
-
 	if cfg.BuildTags != "" {
 		args = append(args, "-tags", cfg.BuildTags)
 	}
+	args = append(args, cfg.Files...)
 	return args
 }

@@ -5,6 +5,7 @@
     ".go"
   ],
   "buildTags": "",
+  "buildPath": "",
   "cmdArgs": [],
   "envs": [],
   "lang": "go",
