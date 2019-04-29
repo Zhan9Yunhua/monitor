@@ -23,7 +23,7 @@ func mon(paths []string) {
 	if err != nil {
 		logger.Fatalln("Fail to new watcher")
 	}
-	logger.Infoln("Initializing ...")
+	logger.Successln("Initializing ...")
 
 	go monHandler(watcher)
 
