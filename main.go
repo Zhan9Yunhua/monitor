@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"os"
 	"runtime"
 	"strings"
@@ -33,11 +34,11 @@ func main() {
 	flag.Parse()
 
 	curPath, _ = os.Getwd()
-	//curPath += "/test"
+	curPath += "/test"
 
 	cfgHandler()
-
 	flagHandler()
+	fmt.Printf("%+v\n", cfg)
 	appHandler()
 }
 
@@ -60,6 +61,10 @@ func flagHandler() {
 
 	if cfg.Lang != "go" && cfg.Script == "" {
 		logger.Fatalln("Script can not empty !")
+	}
+
+	if len(cfg.Exts) == 0 || !isIn(cfg.Exts, "."+cfg.Lang) {
+		cfg.Exts = append(cfg.Exts, "."+cfg.Lang)
 	}
 }
 

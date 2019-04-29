@@ -41,7 +41,6 @@ func cfgHandler() {
 		cfgFile = defCfgFile
 	}
 	fpath, _ := filepath.Abs(cfgFile)
-	println(fpath)
 	if fileExist(fpath) {
 		if fby, err := ioutil.ReadFile(fpath); err == nil {
 			if json.Unmarshal(fby, c) != nil {
@@ -65,9 +64,7 @@ func cfgHandler() {
 	if c.AppName == "" {
 		c.AppName = filepath.Base(curPath)
 	}
-	if len(c.Exts) == 0 || !isIn(c.Exts, "."+c.Lang) {
-		c.Exts = append(c.Exts, "."+c.Lang)
-	}
+
 	if len(c.IgnoreRegs) > 0 {
 		for _, regex := range c.IgnoreRegs {
 			if r, err := regexp.Compile(regex); err == nil {
