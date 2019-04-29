@@ -17,8 +17,11 @@ type Config struct {
 	Output string `json:"output"`
 	// 监听的文件后缀
 	Exts []string `json:"exts"`
-	// BuildPkg  string
+	// BuildTags  string
 	BuildTags string `json:"buildTags"`
+	// BuildPath
+	BuildPath string `json:"buildPath"`
+	Files     []string
 	// 执行的cmd
 	CmdArgs []string `json:"cmdArgs"`
 	// 环境变量

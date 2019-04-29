@@ -147,6 +147,8 @@ func start() {
 func argsHandler() []string {
 	args := []string{"build"}
 	args = append(args, "-o", cfg.Output)
+	args = append(args, cfg.Files...)
+
 	if cfg.BuildTags != "" {
 		args = append(args, "-tags", cfg.BuildTags)
 	}

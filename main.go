@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"os"
 	"runtime"
 	"strings"
@@ -11,19 +10,21 @@ import (
 )
 
 var (
-	cfg     *Config
-	lang    string
-	script  string
-	curPath string
-	output  string
-	cfgFile string
-	cmdArgs string
-	exit    chan bool
+	cfg       *Config
+	lang      string
+	script    string
+	curPath   string
+	output    string
+	cfgFile   string
+	cmdArgs   string
+	buildPath string
+	exit      chan bool
 )
 
 func init() {
 	flag.StringVar(&output, "o", "", "go build output")
 	flag.StringVar(&cfgFile, "f", "", "config file")
+	flag.StringVar(&buildPath, "b", "", "build package path")
 	flag.StringVar(&cmdArgs, "args", "", "app run args. like: -args='-host=:8080,-name=demo'")
 	flag.StringVar(&lang, "lang", "", "language")
 	flag.StringVar(&script, "s", "", "run script")
@@ -38,7 +39,6 @@ func main() {
 
 	cfgHandler()
 	flagHandler()
-	fmt.Printf("%+v\n", cfg)
 	appHandler()
 }
 
@@ -59,12 +59,20 @@ func flagHandler() {
 		cfg.CmdArgs = strings.Split(cmdArgs, " ")
 	}
 
+	if buildPath != "" {
+		cfg.BuildPath = buildPath
+	}
+
 	if cfg.Lang != "go" && cfg.Script == "" {
 		logger.Fatalln("Script can not empty !")
 	}
 
 	if len(cfg.Exts) == 0 || !isIn(cfg.Exts, "."+cfg.Lang) {
 		cfg.Exts = append(cfg.Exts, "."+cfg.Lang)
+	}
+
+	if cfg.BuildPath != "" {
+		cfg.Files = strings.Split(cfg.BuildPath, ",")
 	}
 }
 

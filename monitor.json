@@ -2,12 +2,12 @@
   "appName": "app",
   "output": "",
   "exts": [
-    ".js"
+    ".go"
   ],
   "buildTags": "",
   "cmdArgs": [],
   "envs": [],
-  "lang": "js",
+  "lang": "go",
   "script": "node test.js",
   "ignores": [
   ],
