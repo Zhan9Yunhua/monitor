@@ -3,7 +3,7 @@
 
 ### 安装 
 ```
-go get github.com/Zhan9Yunhua/monitor
+go get github.com/kum0/monitor
 ```
 
 ### 使用
