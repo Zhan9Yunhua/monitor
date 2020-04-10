@@ -3,7 +3,7 @@
 
 ### 安装 
 ```
-go get github.com/rx-78-2-kum0/monitor
+go get github.com/rx-78-kum0/monitor
 ```
 
 ### 使用
